@@ -1,0 +1,58 @@
+﻿<Application x:Class="Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Wpf"
+             xmlns:viewModels="clr-namespace:Wpf.ViewModels"
+             xmlns:userControls="clr-namespace:Wpf.UserControls"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewModels:EngineViewModel}">
+                <userControls:EngineControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
+                <userControls:HomeControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:AccumulatorViewModel}">
+                <userControls:AccumulatorControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:DiskViewModel}">
+                <userControls:DiskControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:CoeffMoneyPerKilometerViewModel}">
+                <userControls:CoeffMoneyPerKilometerControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:GameViewModel}">
+                <userControls:GameControl />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:MainWindowViewModel}">
+                <local:MainWindow />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:ResultViewModel}">
+                <userControls:ResultControl />
+            </DataTemplate>
+            <viewModels:ViewModelLocator x:Key="Locator"/>
+                
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Background" Value="LightSkyBlue"/>
+            </Style>
+                
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+                
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

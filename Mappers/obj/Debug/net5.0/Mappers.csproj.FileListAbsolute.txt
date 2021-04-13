@@ -1,0 +1,17 @@
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\bin\Debug\net5.0\Mappers.deps.json
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\bin\Debug\net5.0\Mappers.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\bin\Debug\net5.0\ref\Mappers.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\bin\Debug\net5.0\Mappers.pdb
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\bin\Debug\net5.0\Entities.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\bin\Debug\net5.0\Models.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\bin\Debug\net5.0\Entities.pdb
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\bin\Debug\net5.0\Models.pdb
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\Mappers.csprojAssemblyReference.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\Mappers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\Mappers.AssemblyInfoInputs.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\Mappers.AssemblyInfo.cs
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\Mappers.csproj.CoreCompileInputs.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\Mappers.csproj.CopyComplete
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\Mappers.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\ref\Mappers.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Mappers\obj\Debug\net5.0\Mappers.pdb

@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="Wpf.UserControls.GameControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Wpf.UserControls"
+             xmlns:wpf="clr-namespace:Wpf"
+             xmlns:models="clr-namespace:Models;assembly=Models"
+             xmlns:viewModels="clr-namespace:Wpf.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:fa="http://schemas.fontawesome.com/icons/"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <Binding Path="GameViewModel" Source="{StaticResource Locator}"/>
+    </UserControl.DataContext>
+    
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="15 0 0 0 " />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16 " />
+        </Style>
+        <Style TargetType="{x:Type Rectangle}" x:Key="EngineStyle">
+            <Setter Property="Fill" Value="Green"></Setter>
+            <Setter Property="Margin" Value="5 0"></Setter>
+            <Setter Property="Width" Value="10"></Setter>
+            <Setter Property="Height" Value="10"></Setter> 
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding UpdateSourceTrigger=PropertyChanged, Path = DataContext.SelectedEngine.Detail.IsBroken,
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}"
+                             Value="True">
+                    <Setter Property="Fill" Value="Red" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Rectangle}" x:Key="AccumulatorStyle">
+            <Setter Property="Fill" Value="Green"></Setter>
+            <Setter Property="Margin" Value="5 0"></Setter>
+            <Setter Property="Width" Value="10"></Setter>
+            <Setter Property="Height" Value="10"></Setter> 
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding DataContext.SelectedAccumulator.Detail.IsBroken}"
+                             Value="True">
+                    <Setter Property="Fill" Value="Red" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Rectangle}" x:Key="DiskStyle">
+            <Setter Property="Fill" Value="Green"></Setter>
+            <Setter Property="Margin" Value="5 0"></Setter>
+            <Setter Property="Width" Value="10"></Setter>
+            <Setter Property="Height" Value="10"></Setter> 
+            <Style.Triggers> 
+                <DataTrigger Binding="{Binding DataContext.SelectedDiskSet.Detail.IsBroken}"
+                             Value="True">
+                    <Setter Property="Fill" Value="Red" />
+                </DataTrigger>
+            </Style.Triggers> 
+        </Style> 
+        <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockMessageStyle">
+            <Setter Property="FontSize" Value="16 " />
+            <Setter Property ="Visibility" Value="Hidden" />
+            <Setter Property="Foreground" Value="Red" />
+            <Style.Triggers> 
+                <DataTrigger Binding="{Binding DataContext.AllDetailsAreRepaired}"
+                             Value="False">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </Style.Triggers> 
+        </Style> 
+        <Style TargetType="{x:Type Button}" x:Key="ButtonRepairDetailStyle">
+            <Setter Property="Content" Value="Repair" />
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="LightSkyBlue"/>
+            <Style.Triggers> 
+                <DataTrigger Binding="{Binding DataContext.AllDetailsAreRepaired}"
+                             Value="False">
+                    <Setter Property="Border.BorderBrush" Value="Red" />
+                    <Setter Property="Border.BorderThickness" Value="2" />
+                </DataTrigger>
+            </Style.Triggers> 
+        </Style> 
+    </UserControl.Resources>
+    
+        <Grid DataContext="{Binding 
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}">
+            <Canvas>
+                <StackPanel Canvas.Right="240" Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="Solid_Flag" Height="20" Foreground="OrangeRed"/>
+                    <TextBlock Margin="15 0" Text="{Binding Path = DataContext.Car.Mileage, 
+                                    UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                    <TextBlock Text="km"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Canvas.Top="55" Canvas.Left="20">
+                    <TextBlock Text="Engine" TextDecorations="Underline"/>
+        
+                    <!-- Engine -->
+                    <StackPanel>
+                        <TextBlock Text="Type:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedEngine.Type}"/>
+                    </StackPanel>
+        
+                    <StackPanel>
+                        <TextBlock Text="RepairCost:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedEngine.Detail.RepairCost}" />
+                    </StackPanel>
+        
+                    <StackPanel>
+                        <TextBlock Text="Stability:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedEngine.Detail.Stability}" />
+                    </StackPanel>
+        
+                    <!-- Accumulator -->
+                    <TextBlock Text="Accumulator" TextDecorations="Underline"/>
+        
+                    <StackPanel>
+                        <TextBlock Text="Capacity:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedAccumulator.Capacity}" />
+                    </StackPanel>
+        
+                    <StackPanel>
+                        <TextBlock Text="RepairCost:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedAccumulator.Detail.RepairCost}" />
+                    </StackPanel>
+        
+                    <StackPanel>
+                        <TextBlock Text="Stability:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedAccumulator.Detail.Stability}" />
+                    </StackPanel>
+        
+                    <!-- Disks -->
+                    <TextBlock Text="DisksSet" TextDecorations="Underline"/>
+        
+                    <StackPanel>
+                        <TextBlock Text="Diameter:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedDiskSet.Diameter}" />
+                    </StackPanel>
+        
+                    <StackPanel>
+                        <TextBlock Text="RepairCost:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedDiskSet.Detail.RepairCost}" />
+                    </StackPanel>
+        
+                    <StackPanel>
+                        <TextBlock Text="Stability:" />
+                        <TextBlock Text = "{Binding Path = DataContext.SelectedDiskSet.Detail.Stability}" />
+                    </StackPanel>
+        
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Canvas.Left="340" Canvas.Top="55">
+                    <TextBlock Text = "Details Status" />
+                    <TextBlock Text="Engine" Margin="0 25 0 0">
+                        <Rectangle Style="{StaticResource EngineStyle}" />
+                    </TextBlock>
+                    <TextBlock Text="Accumulator" Margin="0 20 0 0">
+                        <Rectangle Style="{StaticResource AccumulatorStyle}" />
+                    </TextBlock>
+                    <TextBlock Text="Disks" Margin="0 20 0 0">
+                        <Rectangle Style="{StaticResource DiskStyle}" />
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="0">
+                        <TextBlock Text="Sum to repair" Margin="0 30 0 0"/>
+                        <TextBlock Text="{Binding DataContext.DetailsRepairCost}" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <Button Command="{Binding DataContext.MoveCommand}" 
+                        Content="Move" Canvas.Right="100" Canvas.Bottom="80"/>
+                <Button Command="{Binding DataContext.RepairDetailCommand}" 
+                Canvas.Right="330" Canvas.Bottom="80" Style="{StaticResource ButtonRepairDetailStyle}"/>
+                <TextBlock Text="Repair Details" Canvas.Right = "330" Canvas.Bottom="55" 
+                           Style="{StaticResource TextBlockMessageStyle}"/>
+            </Canvas>
+        </Grid>
+
+</UserControl>

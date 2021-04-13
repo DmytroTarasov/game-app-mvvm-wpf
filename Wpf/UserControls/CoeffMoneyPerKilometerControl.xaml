@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Wpf.UserControls.CoeffMoneyPerKilometerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Wpf.UserControls"
+             xmlns:wpf="clr-namespace:Wpf"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <Binding Path="CoeffMoneyPerKilometerViewModel" Source="{StaticResource Locator}"/>
+    </UserControl.DataContext>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}">
+            <TextBlock>Enter a coeff earn money per kilometer</TextBlock>
+            <TextBox Text="{Binding DataContext.CoeffMoneyPerKilometer, ValidatesOnExceptions=True, 
+            ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0.0}}"
+                     Margin="0 5"/>
+            <!-- <TextBox Margin="0 5"> -->
+            <!--     <TextBox.Text> -->
+            <!--         <Binding Path="DataContext.CoeffMoneyPerKilometer"  -->
+            <!--                  ValidatesOnDataErrors="True" -->
+            <!--                  UpdateSourceTrigger="PropertyChanged"> -->
+            <!--             <Binding.ValidationRules> -->
+            <!--                 <DataErrorValidationRule/> -->
+            <!--             </Binding.ValidationRules> -->
+            <!--         </Binding> -->
+            <!--     </TextBox.Text> -->
+            <!-- </TextBox> -->
+            <DockPanel>
+                <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,5">
+                    <Button Command="{Binding Path = DataContext.LoadDiskControlCommand}" 
+                            Content="Back" />
+                    <Button Command="{Binding DataContext.CreateCarCommand}"
+                            Content="Create Car"/>
+                </UniformGrid>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

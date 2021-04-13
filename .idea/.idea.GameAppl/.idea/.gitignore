@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.GameAppl.iml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\Dmytro\RiderProjects\GameAppl\.idea\.idea.GameAppl\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

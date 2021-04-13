@@ -1,0 +1,15 @@
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\bin\Debug\net5.0\Interfaces.deps.json
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\bin\Debug\net5.0\Interfaces.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\bin\Debug\net5.0\ref\Interfaces.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\bin\Debug\net5.0\Interfaces.pdb
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\bin\Debug\net5.0\Entities.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\bin\Debug\net5.0\Entities.pdb
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\Interfaces.csprojAssemblyReference.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\Interfaces.AssemblyInfoInputs.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\Interfaces.AssemblyInfo.cs
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\Interfaces.csproj.CopyComplete
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\Interfaces.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\ref\Interfaces.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\Interfaces\obj\Debug\net5.0\Interfaces.pdb
