@@ -8,11 +8,14 @@ namespace Wpf.ViewModels
     public class DiskViewModel : BaseViewModel
     {
         public ObservableCollection<DiskModel> Disks { get; }
+        
+        private IDiskService _diskService;
         public DiskViewModel(IDiskService diskService)
         {
+            _diskService = diskService;
             Disks = new ObservableCollection<DiskModel> 
             (
-                diskService.GetAllWithDetails().ToList()
+                _diskService.GetAllWithDetails().ToList()
             );
         }
 

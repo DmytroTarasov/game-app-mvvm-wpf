@@ -5,30 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Wpf.UserControls"
              xmlns:wpf="clr-namespace:Wpf"
+             xmlns:models="clr-namespace:Models;assembly=Models"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.DataContext>
         <Binding Path="CoeffMoneyPerKilometerViewModel" Source="{StaticResource Locator}"/>
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style x:Key="CoeffMoneyPerKilometerError" TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{Binding 
             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}">
             <TextBlock>Enter a coeff earn money per kilometer</TextBlock>
-            <TextBox Text="{Binding DataContext.CoeffMoneyPerKilometer, ValidatesOnExceptions=True, 
+            <TextBox Text="{Binding DataContext.TempCar.CoeffMoneyPerKilometer, ValidatesOnExceptions=True, 
             ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0.0}}"
-                     Margin="0 5"/>
-            <!-- <TextBox Margin="0 5"> -->
-            <!--     <TextBox.Text> -->
-            <!--         <Binding Path="DataContext.CoeffMoneyPerKilometer"  -->
-            <!--                  ValidatesOnDataErrors="True" -->
-            <!--                  UpdateSourceTrigger="PropertyChanged"> -->
-            <!--             <Binding.ValidationRules> -->
-            <!--                 <DataErrorValidationRule/> -->
-            <!--             </Binding.ValidationRules> -->
-            <!--         </Binding> -->
-            <!--     </TextBox.Text> -->
-            <!-- </TextBox> -->
-            <DockPanel>
+                     Margin="0 5" Style="{StaticResource CoeffMoneyPerKilometerError}"/>
+            <DockPanel DataContext="{Binding 
+            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}">
                 <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,5">
                     <Button Command="{Binding Path = DataContext.LoadDiskControlCommand}" 
                             Content="Back" />

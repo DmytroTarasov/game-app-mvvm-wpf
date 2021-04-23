@@ -44,7 +44,7 @@
     </UserControl.Resources>
    
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="100" Text="Choose disk set" />
+        <TextBlock HorizontalAlignment="Center" Margin="100" FontSize="16" Text="Choose disk set" />
         <ListView FontSize="16" ItemsSource="{Binding Disks}"
                   SelectedItem="{Binding DataContext.SelectedDiskSet,
                 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}"

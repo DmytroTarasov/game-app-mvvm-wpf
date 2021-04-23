@@ -64,7 +64,7 @@ namespace Models
                 {
                     if (CoeffMoneyPerKilometer <= 0 || CoeffMoneyPerKilometer > 0.5)
                     {
-                        result = "CoeffMoneyPerKilometer must not be less than 0 or greater than 0.5.";
+                        result = "CoeffMoneyPerKilometer must not be less than 0 or greater than 0.5";
                     }
                 }
                 return result;

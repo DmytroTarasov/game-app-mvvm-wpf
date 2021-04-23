@@ -45,7 +45,7 @@
     </UserControl.Resources>
     
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="100" Text="Choose an engine" />
+        <TextBlock HorizontalAlignment="Center" Margin="100" FontSize="16" Text="Choose an engine" />
         <ListView FontSize="16" ItemsSource="{Binding Engines}"
                   SelectedItem="{Binding DataContext.SelectedEngine,
                 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}"
@@ -57,11 +57,6 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <!-- <GridViewColumn DisplayMemberBinding="{Binding Path=Type}">Type</GridViewColumn> -->
-                    <!-- <GridViewColumn DisplayMemberBinding="{Binding Path=Detail.Stability}">Stability</GridViewColumn> -->
-                    <!-- <GridViewColumn DisplayMemberBinding="{Binding Path=Detail.PurchaseCost}">Purchase Cost</GridViewColumn> -->
-                    <!-- <GridViewColumn DisplayMemberBinding="{Binding Path=Detail.RepairCost}">Repair Cost</GridViewColumn> -->
-                    <!-- <GridViewColumn DisplayMemberBinding="{Binding Path=Detail.CoeffDecrStability}">CoeffDecrStability</GridViewColumn> -->
                     <GridViewColumn Header="Type">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

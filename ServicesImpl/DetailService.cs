@@ -74,7 +74,7 @@ namespace ServicesImpl
         public bool DecrStabilityAfterRepair(DetailModel detail)
         {
             var detailEntity = _uof.Details.Get(detail.Id);
-            if (detailEntity.Stability - detailEntity.CoeffDecrStability > 0.1) // ремонт разрешен
+            if (detailEntity.Stability - detailEntity.CoeffDecrStability > 0.1)
             {
                 detailEntity.Stability = Math.Round(detailEntity.Stability - detailEntity.CoeffDecrStability, 1);
                 if (detailEntity.Stability - detailEntity.CoeffDecrStability < 0.1)
@@ -84,27 +84,27 @@ namespace ServicesImpl
                 detailEntity.EntityToModelUpdate(detail);
                 return true;
             }
-            
-            //detailEntity.CanBeRepaired = false;
-            //detailEntity.EntityToModelUpdate(detail);
-            
+
             _uof.Complete();
             return false;
         }
 
         public double ReplaceDetail(CarModel car, DetailModel detail, DetailModel detailToReplace, double money)
         {
-            var carEntity = _uof.Cars.Get(car.Id);
-            var newDetailEntity = _uof.Details.Get(detail.Id);
-            var detailToReplaceEntity = _uof.Details.Get(detailToReplace.Id);
-            
-            carEntity.Details.Remove(detailToReplaceEntity);
-            carEntity.Details.Add(newDetailEntity);
+            if (detail != detailToReplace)
+            {
+                var carEntity = _uof.Cars.Get(car.Id);
+                var newDetailEntity = _uof.Details.Get(detail.Id);
+                var detailToReplaceEntity = _uof.Details.Get(detailToReplace.Id);
 
-            carEntity.EntityToModelUpdate(car);
+                carEntity.Details.Remove(detailToReplaceEntity);
+                carEntity.Details.Add(newDetailEntity);
 
-            money -= detail.PurchaseCost;
-            _uof.Complete();
+                carEntity.EntityToModelUpdate(car);
+
+                money -= detail.PurchaseCost;
+                _uof.Complete();
+            }
             return money;
         }
     }

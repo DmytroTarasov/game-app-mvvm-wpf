@@ -8,7 +8,6 @@ namespace Mappers
 {
     public static class CarMapper
     {
-
         public static CarEntity ModelToEntity(this CarModel car)
         {
             return new CarEntity
@@ -39,12 +38,11 @@ namespace Mappers
         }
         public static CarModel EntityToModelUpdate(this CarEntity carEntity, CarModel carModel)
         {
-            //var detailModel = new DetailModel();
             carModel.Id = carEntity.Id;
             carModel.CoeffMoneyPerKilometer = carEntity.CoeffMoneyPerKilometer;
             carModel.Mileage = carEntity.Mileage;
             carModel.Details =
-                new ObservableCollection<DetailModel>(carEntity.Details.Select(d => d.EntityToModelUpdate(new DetailModel())).ToList());
+                new ObservableCollection<DetailModel>(carEntity.Details.Select(d => d.EntityToModel()).ToList());
             return carModel;
         }
     }

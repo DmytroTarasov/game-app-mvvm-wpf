@@ -13,12 +13,6 @@ namespace Mappers
                 Detail = disk.Detail.ModelToEntity()
             };
         }
-        // public static DiskEntity ModelToEntityUpdate(this DiskModel diskModel, DiskEntity diskEntity)
-        // {
-        //     diskEntity.Diameter = diskModel.Diameter;
-        //     diskEntity.Detail = diskModel.Detail.ModelToEntityUpdate(new DetailEntity());
-        //     return diskEntity;
-        // }
         public static DiskModel EntityToModel(this DiskEntity disk)
         {
             return new DiskModel
@@ -27,11 +21,5 @@ namespace Mappers
                 Detail = disk.Detail.EntityToModel()
             };
         }
-        // public static DiskModel EntityToModelUpdate(this DiskEntity diskEntity, DiskModel diskModel)
-        // {
-        //     diskModel.Diameter = diskEntity.Diameter;
-        //     diskModel.Detail = diskEntity.Detail.EntityToModelUpdate(new DetailModel());
-        //     return diskModel;
-        // }
     }
 }

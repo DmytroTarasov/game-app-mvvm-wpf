@@ -27,4 +27,10 @@
       <Compile Remove="UserControls\AccumulatorControl1.xaml.cs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Icons\car.ico" />
+      <None Remove="Icons\car_1.ico" />
+      <Resource Include="Icons\car.ico" />
+    </ItemGroup>
+
 </Project>

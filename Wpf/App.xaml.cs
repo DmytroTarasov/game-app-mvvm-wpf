@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using Data;
-using Entities;
 using Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories;
@@ -30,6 +29,7 @@ namespace Wpf
             
             foreach (var detailEntity in context.Details)
             {
+                detailEntity.Stability = 0.9;
                 detailEntity.IsBroken = false;
                 detailEntity.CanBeRepaired = true;
             }
@@ -38,44 +38,6 @@ namespace Wpf
             var window = ServiceProvider.GetRequiredService<MainWindow>();
             window.Show();
             base.OnStartup(e);
-
-                //
-            // DetailEntity de1 = new DetailEntity
-            // {
-            //     Stability = 0.5,
-            //     PurchaseCost = 12,
-            //     RepairCost = 9,
-            //     CoeffDecrStability = 0.2,
-            //     CanBeRepaired = true,System.Linq.IQueryable.Expression (DbSet<DetailEntity>) = {Expression} Exception of type 'System.NotSupportedException' was thrown 
-            //     IsBroken = false
-            // };
-            // AccumulatorEntity ae1 = new AccumulatorEntity()
-            // {
-            //     DetailId = de1.Id,
-            //     Capacity = 28
-            // };
-            //
-            //
-            // DetailEntity de2 = new DetailEntity
-            // {
-            //     Stability = 0.4,
-            //     PurchaseCost = 10,
-            //     RepairCost = 6,
-            //     CoeffDecrStability = 0.2,
-            //     CanBeRepaired = true,
-            //     IsBroken = false
-            // };
-            //
-            // DiskEntity dd1 = new DiskEntity()
-            // {
-            //     Diameter = 30,
-            //     DetailId = de2.Id
-            // };
-            // context.Details.Add(de1);
-            // context.Details.Add(de2);
-            // context.Accumulators.Add(ae1);
-            // context.Disks.Add(dd1);
-            // context.SaveChanges();
         }
         private void ConfigureServices(IServiceCollection services)
         {

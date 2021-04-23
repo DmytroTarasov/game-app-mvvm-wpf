@@ -11,11 +11,14 @@ namespace Wpf.ViewModels
     public class EngineViewModel : BaseViewModel
     {
         public ObservableCollection<EngineModel> Engines { get; }
+        
+        private IEngineService _engineService;
         public EngineViewModel(IEngineService engineService)
         {
+            _engineService = engineService;
             Engines = new ObservableCollection<EngineModel> 
             (
-                engineService.GetAllWithDetails().ToList()
+                _engineService.GetAllWithDetails().ToList()
             );
         }
     }

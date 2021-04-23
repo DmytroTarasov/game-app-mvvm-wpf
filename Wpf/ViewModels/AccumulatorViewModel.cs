@@ -8,11 +8,14 @@ namespace Wpf.ViewModels
     public class AccumulatorViewModel : BaseViewModel
     {
         public ObservableCollection<AccumulatorModel> Accumulators { get; }
+
+        private IAccumulatorService _accumulatorService;
         public AccumulatorViewModel(IAccumulatorService accumulatorService)
         {
+            _accumulatorService = accumulatorService;
             Accumulators = new ObservableCollection<AccumulatorModel> 
             (
-                accumulatorService.GetAllWithDetails().ToList()
+                _accumulatorService.GetAllWithDetails().ToList()
             );
         }
 

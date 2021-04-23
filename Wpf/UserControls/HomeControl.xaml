@@ -19,19 +19,17 @@
             <Setter Property="Background" Value="LightSkyBlue"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
     </UserControl.Resources>
         <Grid>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <!-- <Button Name="StartGame" Content="Start Game" Command="{Binding Path = LoadEngineControlCommand, -->
-                <!-- RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}"  -->
-                <!--         Background="LightSkyBlue" Width="100" Height="50" Canvas.Top="30" FontSize="16"/> -->
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 50">
+                <TextBlock Text="Rally" FontSize="96" FontWeight="Light" Margin="0 20"/>
                 <Button Content="Start" Command="{Binding Path = DataContext.LoadEngineControlCommand,
                 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}"/>
                 <Button Content="Exit" Command="{Binding Path = DataContext.CloseApplicationCommand,
                 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type wpf:MainWindow}}}"/>
             </StackPanel>
-        <!-- <ContentControl Content="{Binding Path=CurrentViewModel, -->
-        <!-- RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type viewModels:MainWindowViewModel}}}"></ContentControl> -->
         </Grid>
-    
 </UserControl>

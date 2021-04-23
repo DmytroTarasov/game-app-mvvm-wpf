@@ -89,7 +89,11 @@ namespace Wpf.ViewModels
 
         public double Coins
         {
-            get => _coins;
+            get
+            {
+                if (_coins > 0) return _coins;
+                return 0;
+            }
             set
 
             {
@@ -161,17 +165,6 @@ namespace Wpf.ViewModels
                 RaisePropertyChanged("SelectedDiskSet");
             }
         }
-        
-        private double _coeffMoneyPerKilometer;
-        public double CoeffMoneyPerKilometer
-        {
-            get => _coeffMoneyPerKilometer;
-            set
-            {
-                _coeffMoneyPerKilometer = Convert.ToDouble(value);
-                RaisePropertyChanged("CoeffMoneyPerKilometer");
-            }
-        }
 
         private CarModel _car;
         public CarModel Car
@@ -183,9 +176,22 @@ namespace Wpf.ViewModels
                 RaisePropertyChanged("Car");
             }
         }
+
+        private CarModel _tempCar = new();
+        public CarModel TempCar
+        {
+            get => _tempCar;
+            set
+            {
+                _tempCar = value;
+                RaisePropertyChanged("TempCar");
+            }
+        }
         private void CreateCar()
         {
-            (Coins, Car) = _carService.CreateCar(SelectedEngine, SelectedAccumulator, SelectedDiskSet, CoeffMoneyPerKilometer, Coins);
+            if (!(TempCar.CoeffMoneyPerKilometer > 0) || !(TempCar.CoeffMoneyPerKilometer <= 0.5)) return;
+            (Coins, Car) = _carService.CreateCar(SelectedEngine, SelectedAccumulator, SelectedDiskSet,
+                TempCar.CoeffMoneyPerKilometer, Coins);
 
             LoadGameControl();
         }
@@ -211,24 +217,29 @@ namespace Wpf.ViewModels
                 RaisePropertyChanged("IsReplaced");
             }
         }
+
         private void Move()
         {
-            foreach (var detailModel in _car.Details)
+            while (true)
             {
-                if (detailModel.IsBroken)
+                foreach (var detailModel in _car.Details)
                 {
-                    _allDetailsAreRepaired = false;
+                    if (!detailModel.IsBroken) continue;
+                    AllDetailsAreRepaired = false;
                     break;
                 }
-            }
-            if (_allDetailsAreRepaired)
-            {
-                double initialMileage = _car.Mileage;
-                _carService.IncreaseMileage(Car);
-                //Car = _carService.Get(_car.Id);
-                double mileageAfterMoving = _car.Mileage;
-                Coins = _carService.RiseMoney(_car, mileageAfterMoving - initialMileage, _coins);
-                CheckDetails(_car, _coins);
+
+                if (_allDetailsAreRepaired)
+                {
+                    double initialMileage = _car.Mileage;
+                    _carService.IncreaseMileage(Car);
+                    double mileageAfterMoving = _car.Mileage;
+                    Coins = _carService.RiseMoney(_car, mileageAfterMoving - initialMileage, _coins);
+                    CheckDetails(_car, _coins);
+                    continue;
+                }
+
+                break;
             }
         }
 
@@ -242,54 +253,54 @@ namespace Wpf.ViewModels
             SelectedEngine.Detail = _car.Details.Single(d => d.Id == _selectedEngine.Detail.Id);
             SelectedAccumulator.Detail = _car.Details.Single(d => d.Id == _selectedAccumulator.Detail.Id);
             SelectedDiskSet.Detail = _car.Details.Single(d => d.Id == _selectedDiskSet.Detail.Id);
+            
         }
         private void RepairDetail()
         {
             foreach (var detailModel in _car.Details)
             {
-                if (detailModel.IsBroken)
+                if (!detailModel.IsBroken) continue;
+                if (_coins < detailModel.RepairCost)
                 {
-                    if (_coins < detailModel.RepairCost)
-                    {
-                        LoadResultControl();
-                        break;
-                    }
+                    LoadResultControl();
+                    break;
+                }
 
-                    if (detailModel.CanBeRepaired)
+                if (detailModel.CanBeRepaired)
+                {
+                    _detailService.DecrStabilityAfterRepair(detailModel);
+                    Coins -= _detailService.RepairDetail(detailModel, _coins);
+                }
+                else
+                {
+                    _isReplaced = true;
+                    if (SelectedEngine.Detail.Id == detailModel.Id)
                     {
-                        _detailService.DecrStabilityAfterRepair(detailModel);
-                        Coins -= _detailService.RepairDetail(detailModel, _coins);
+                        _isEngine = true;
+                        _isAccumulator = _isDisk = false;
+                            
+                        _detailToReplace = SelectedEngine.Detail;
+                        LoadEngineControl();
+                    }
+                    else if (SelectedAccumulator.Detail.Id == detailModel.Id)
+                    {
+                        _isAccumulator = true;
+                        _isEngine = _isDisk = false;
+                            
+                        _detailToReplace = SelectedAccumulator.Detail;
+                        LoadAccumulatorControl();
                     }
                     else
                     {
-                        _isReplaced = true;
-                        if (SelectedEngine.Detail.Id == detailModel.Id)
-                        {
-                            _isEngine = true;
-                            _isAccumulator = _isDisk = false;
+                        _isDisk = true;
+                        _isEngine = _isAccumulator = false;
                             
-                            _detailToReplace = SelectedEngine.Detail;
-                            LoadEngineControl();
-                        }
-                        if (SelectedAccumulator.Detail.Id == detailModel.Id)
-                        {
-                            _isAccumulator = true;
-                            _isEngine = _isDisk = false;
-                            
-                            _detailToReplace = SelectedAccumulator.Detail;
-                            LoadAccumulatorControl();
-                        }
-                        else
-                        {
-                            _isDisk = true;
-                            _isEngine = _isAccumulator = false;
-                            
-                            _detailToReplace = SelectedDiskSet.Detail; 
-                            LoadDiskControl();
-                        }
+                        _detailToReplace = SelectedDiskSet.Detail; 
+                        LoadDiskControl();
                     }
                 }
             }
+            AllDetailsAreRepaired = true;
         }
         private void ReplaceDetail()
         {
