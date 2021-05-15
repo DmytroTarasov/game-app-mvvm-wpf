@@ -10,12 +10,12 @@ namespace EntityTypeConfigurations
         {
             builder.ToTable("Accumulators");
             
-            builder.HasKey(a => a.DetailId);
+            builder.HasKey(a => a.Id);
             
             builder
                 .HasOne(a => a.Detail)
                 .WithOne(d => d.Accumulator)
-                .HasForeignKey<AccumulatorEntity>(a => a.DetailId);
+                .HasForeignKey<AccumulatorEntity>(a => a.Id);
             
         }
     }

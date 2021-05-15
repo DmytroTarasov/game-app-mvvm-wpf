@@ -32,7 +32,6 @@ namespace ServicesImpl
         public (double, CarModel) CreateCar(EngineModel e, AccumulatorModel a, DiskModel d, double coeffMoneyPerKilometer, 
             double money)
         {
-            //if (!(money - (e.Detail.PurchaseCost + a.Detail.PurchaseCost + d.Detail.PurchaseCost) >= 0)) return (-1, null);
             var car = new CarModel
             {
                 CoeffMoneyPerKilometer = coeffMoneyPerKilometer,

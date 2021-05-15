@@ -2,10 +2,9 @@
 
 namespace Entities
 {
-    public class DiskEntity 
+    public class DiskEntity : BaseEntity<Guid>
     {
         public DetailEntity Detail { get; set; }
-        public Guid DetailId { get; set; }
         public int Diameter { get; set; }
     }
 }

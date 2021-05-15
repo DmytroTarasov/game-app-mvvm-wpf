@@ -10,12 +10,12 @@ namespace EntityTypeConfigurations
         {
             builder.ToTable("Engines");
             
-            builder.HasKey(e => e.DetailId);
+            builder.HasKey(e => e.Id);
             
             builder
                 .HasOne(e => e.Detail)
                 .WithOne(d => d.Engine)
-                .HasForeignKey<EngineEntity>(e => e.DetailId);
+                .HasForeignKey<EngineEntity>(e => e.Id);
             
         }
     }

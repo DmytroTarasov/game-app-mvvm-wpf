@@ -2,10 +2,9 @@
 
 namespace Entities
 {
-    public class EngineEntity 
+    public class EngineEntity : BaseEntity<Guid>
     {
-        public DetailEntity Detail { get; set; }    
-        public Guid DetailId { get; set; }
+        public DetailEntity Detail { get; set; }
         public string Type { get; set; }
     }
 }

@@ -2,15 +2,8 @@
 
 namespace Entities
 {
-    public class BaseEntity : IBaseEntity
+    public class BaseEntity<TKey> : IBaseEntity<TKey>
     {
-        public Guid Id { get; set; }
-        protected BaseEntity()
-        {
-            if (Id == Guid.Empty)
-            {
-                Id = Guid.NewGuid();
-            }
-        }
+        public TKey Id { get; set; }
     }
 }

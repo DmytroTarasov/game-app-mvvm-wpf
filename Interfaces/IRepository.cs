@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entities;
 
 namespace Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity, TKey> where TEntity : BaseEntity<TKey>
     {
         TEntity Get(Guid id);
         IEnumerable<TEntity> GetAll();

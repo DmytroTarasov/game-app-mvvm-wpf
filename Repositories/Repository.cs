@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Data;
+using Entities;
 using Interfaces;
 
 namespace Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : BaseEntity<TKey>
     {
         protected readonly DataContext Context;
         protected Repository(DataContext context)

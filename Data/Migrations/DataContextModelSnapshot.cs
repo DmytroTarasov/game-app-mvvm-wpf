@@ -37,13 +37,13 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.AccumulatorEntity", b =>
                 {
-                    b.Property<Guid>("DetailId")
+                    b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
-                    b.HasKey("DetailId");
+                    b.HasKey("Id");
 
                     b.ToTable("Accumulators");
                 });
@@ -96,26 +96,26 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.DiskEntity", b =>
                 {
-                    b.Property<Guid>("DetailId")
+                    b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Diameter")
                         .HasColumnType("int");
 
-                    b.HasKey("DetailId");
+                    b.HasKey("Id");
 
                     b.ToTable("Disks");
                 });
 
             modelBuilder.Entity("Entities.EngineEntity", b =>
                 {
-                    b.Property<Guid>("DetailId")
+                    b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DetailId");
+                    b.HasKey("Id");
 
                     b.ToTable("Engines");
                 });
@@ -139,7 +139,7 @@ namespace Data.Migrations
                 {
                     b.HasOne("Entities.DetailEntity", "Detail")
                         .WithOne("Accumulator")
-                        .HasForeignKey("Entities.AccumulatorEntity", "DetailId")
+                        .HasForeignKey("Entities.AccumulatorEntity", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -150,7 +150,7 @@ namespace Data.Migrations
                 {
                     b.HasOne("Entities.DetailEntity", "Detail")
                         .WithOne("Disk")
-                        .HasForeignKey("Entities.DiskEntity", "DetailId")
+                        .HasForeignKey("Entities.DiskEntity", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -161,7 +161,7 @@ namespace Data.Migrations
                 {
                     b.HasOne("Entities.DetailEntity", "Detail")
                         .WithOne("Engine")
-                        .HasForeignKey("Entities.EngineEntity", "DetailId")
+                        .HasForeignKey("Entities.EngineEntity", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

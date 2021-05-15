@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Entities
 {
-    public class DetailEntity : BaseEntity
+    public class DetailEntity : BaseEntity<Guid>
     {
         public double Stability { get; set; }
         public double PurchaseCost { get; set; }
@@ -14,5 +15,12 @@ namespace Entities
         public AccumulatorEntity Accumulator { get; set; }
         public DiskEntity Disk { get; set; }
         public List<CarEntity> Cars { get; set; }
+        public DetailEntity()
+        {
+            if (Id == Guid.Empty)
+            {
+                Id = Guid.NewGuid();
+            }
+        }
     }
 }

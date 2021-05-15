@@ -7,7 +7,7 @@ using Interfaces;
 
 namespace Repositories
 {
-    public class CarRepository : Repository<CarEntity>, ICarRepository
+    public class CarRepository : Repository<CarEntity, Guid>, ICarRepository
     {
         public CarRepository(DataContext context) : base(context) { }
         public IEnumerable<DetailEntity> GetAllCarDetails(Guid carId)

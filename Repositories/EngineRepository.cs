@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repositories
 {
-    public class EngineRepository : Repository<EngineEntity>, IEngineRepository
+    public class EngineRepository : Repository<EngineEntity, Guid>, IEngineRepository
     {
         public EngineRepository(DataContext context) : base(context) { }
         public IEnumerable<EngineEntity> GetAllWithDetails()

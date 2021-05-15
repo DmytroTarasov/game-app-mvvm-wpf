@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Data;
 using Entities;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repositories
 {
-    public class AccumulatorRepository : Repository<AccumulatorEntity>, IAccumulatorRepository
+    public class AccumulatorRepository : Repository<AccumulatorEntity, Guid>, IAccumulatorRepository
     {
         public AccumulatorRepository(DataContext context) : base(context) { }
         

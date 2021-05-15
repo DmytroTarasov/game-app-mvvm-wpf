@@ -1,11 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Data;
 using Entities;
 using Interfaces;
 
 namespace Repositories
 {
-    public class DetailRepository : Repository<DetailEntity>, IDetailRepository
+    public class DetailRepository : Repository<DetailEntity, Guid>, IDetailRepository
     {
         public DetailRepository(DataContext context) : base(context) { }
 

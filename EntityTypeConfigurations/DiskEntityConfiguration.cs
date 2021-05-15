@@ -10,12 +10,12 @@ namespace EntityTypeConfigurations
         {
             builder.ToTable("Disks");
             
-            builder.HasKey(d => d.DetailId);
+            builder.HasKey(d => d.Id);
             
             builder
                 .HasOne(d => d.Detail)
                 .WithOne(d => d.Disk)
-                .HasForeignKey<DiskEntity>(d => d.DetailId);
+                .HasForeignKey<DiskEntity>(d => d.Id);
             
         }
     }

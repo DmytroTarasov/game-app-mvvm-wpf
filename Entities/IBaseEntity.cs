@@ -2,8 +2,8 @@
 
 namespace Entities
 {
-    public interface IBaseEntity
+    public interface IBaseEntity<TKey>
     {
-        public Guid Id { get; set; }
+        public TKey Id { get; set; }
     }
 }

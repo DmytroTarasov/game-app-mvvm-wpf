@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using Data;
+using Entities;
 using Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories;
@@ -24,17 +25,6 @@ namespace Wpf
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
-            DataContext context = ServiceProvider.GetRequiredService<DataContext>();
-            
-            foreach (var detailEntity in context.Details)
-            {
-                detailEntity.Stability = 0.9;
-                detailEntity.IsBroken = false;
-                detailEntity.CanBeRepaired = true;
-            }
-            context.SaveChanges();
-            
             var window = ServiceProvider.GetRequiredService<MainWindow>();
             window.Show();
             base.OnStartup(e);
@@ -43,6 +33,12 @@ namespace Wpf
         {
             services.AddDbContext<DataContext>();
 
+            services.AddSingleton<ICarRepository, CarRepository>();
+            services.AddSingleton<IDetailRepository, DetailRepository>();
+            services.AddSingleton<IEngineRepository, EngineRepository>();
+            services.AddSingleton<IDiskRepository, DiskRepository>();
+            services.AddSingleton<IAccumulatorRepository, AccumulatorRepository>();
+            
             services.AddSingleton(sp => sp);
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IAccumulatorService, AccumulatorService>();
@@ -51,27 +47,29 @@ namespace Wpf
             services.AddSingleton<ICarService, CarService>();
             services.AddSingleton<IDetailService, DetailService>();
 
-            services.AddTransient(sp => new MainWindowViewModel(sp.GetRequiredService<ICarService>(),
-                sp.GetRequiredService<IDetailService>(), sp.GetRequiredService<HomeViewModel>(),
-                sp.GetRequiredService<EngineViewModel>(), sp.GetRequiredService<AccumulatorViewModel>(),
-                sp.GetRequiredService<DiskViewModel>(), sp.GetRequiredService<CoeffMoneyPerKilometerViewModel>(),
-                sp.GetRequiredService<GameViewModel>(), sp.GetRequiredService<ResultViewModel>()));
-            services.AddTransient(sp => new HomeViewModel());
-            services.AddTransient(sp => new EngineViewModel(sp.GetRequiredService<IEngineService>()));
-            services.AddTransient(sp => new AccumulatorViewModel(sp.GetRequiredService<IAccumulatorService>()));
-            services.AddTransient(sp => new DiskViewModel(sp.GetRequiredService<IDiskService>()));
-            services.AddTransient(sp => new CoeffMoneyPerKilometerViewModel());
-            services.AddTransient(sp => new GameViewModel());
-            services.AddTransient(sp => new ResultViewModel());
+            // services.AddTransient(sp => new MainWindowViewModel(sp.GetRequiredService<ICarService>(),
+            //     sp.GetRequiredService<IDetailService>(), sp.GetRequiredService<HomeViewModel>(),
+            //     sp.GetRequiredService<EngineViewModel>(), sp.GetRequiredService<AccumulatorViewModel>(),
+            //     sp.GetRequiredService<DiskViewModel>(), sp.GetRequiredService<CoeffMoneyPerKilometerViewModel>(),
+            //     sp.GetRequiredService<GameViewModel>(), sp.GetRequiredService<ResultViewModel>()));
+            // services.AddTransient(sp => new HomeViewModel());
+            // services.AddTransient(sp => new EngineViewModel(sp.GetRequiredService<IEngineService>()));
+            // services.AddTransient(sp => new AccumulatorViewModel(sp.GetRequiredService<IAccumulatorService>()));
+            // services.AddTransient(sp => new DiskViewModel(sp.GetRequiredService<IDiskService>()));
+            // services.AddTransient(sp => new CoeffMoneyPerKilometerViewModel());
+            // services.AddTransient(sp => new GameViewModel());
+            // services.AddTransient(sp => new ResultViewModel());
+
+            services.AddTransient<MainWindowViewModel>();
+            services.AddTransient<HomeViewModel>();
+            services.AddTransient<EngineViewModel>();
+            services.AddTransient<AccumulatorViewModel>();
+            services.AddTransient<DiskViewModel>();
+            services.AddTransient<CoeffMoneyPerKilometerViewModel>();
+            services.AddTransient<GameViewModel>();
+            services.AddTransient<ResultViewModel>();
             
             services.AddSingleton<MainWindow>();
-            services.AddSingleton<HomeControl>();
-            services.AddSingleton<EngineControl>();
-            services.AddSingleton<AccumulatorControl>();
-            services.AddSingleton<DiskControl>();
-            services.AddSingleton<CoeffMoneyPerKilometerControl>();
-            services.AddSingleton<GameControl>();
-            services.AddSingleton<ResultControl>();
         }
     }
 }
