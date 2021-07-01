@@ -6,7 +6,7 @@ namespace Interfaces
 {
     public interface IRepository<TEntity, TKey> where TEntity : BaseEntity<TKey>
     {
-        TEntity Get(Guid id);
+        TEntity Get(TKey id);
         IEnumerable<TEntity> GetAll();
         void Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);

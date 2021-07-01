@@ -22,7 +22,7 @@ namespace Repositories
         {
             Context.Set<TEntity>().AddRange(entities);
         }
-        public TEntity Get(Guid id)
+        public TEntity Get(TKey id)
         {
             return Context.Set<TEntity>().Find(id);
         }

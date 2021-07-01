@@ -1,0 +1,15 @@
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\bin\Debug\net5.0\EntityTypeConfigurations.deps.json
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\bin\Debug\net5.0\EntityTypeConfigurations.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\bin\Debug\net5.0\ref\EntityTypeConfigurations.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\bin\Debug\net5.0\EntityTypeConfigurations.pdb
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\bin\Debug\net5.0\Entities.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\bin\Debug\net5.0\Entities.pdb
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\EntityTypeConfigurations.csprojAssemblyReference.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\EntityTypeConfigurations.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\EntityTypeConfigurations.AssemblyInfoInputs.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\EntityTypeConfigurations.AssemblyInfo.cs
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\EntityTypeConfigurations.csproj.CoreCompileInputs.cache
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\EntityTypeConfigurations.csproj.CopyComplete
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\EntityTypeConfigurations.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\ref\EntityTypeConfigurations.dll
+C:\Users\Dmytro\RiderProjects\GameAppl\EntityTypeConfigurations\obj\Debug\net5.0\EntityTypeConfigurations.pdb

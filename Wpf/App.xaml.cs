@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Windows;
 using Data;
-using Entities;
 using Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories;
 using Services;
 using ServicesImpl;
-using Wpf.UserControls;
 using Wpf.ViewModels;
 
 namespace Wpf
