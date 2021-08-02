@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\Dmytro\RiderProjects\GameAppl\Wpf\App.xaml
-81879120498
+894138366
 
-212073417830
-228-1880084449
+21-1312488308
+2281360098183
 MainWindow.xaml;UserControls\AccumulatorControl.xaml;UserControls\CoeffMoneyPerKilometerControl.xaml;UserControls\DiskControl.xaml;UserControls\EngineControl.xaml;UserControls\GameControl.xaml;UserControls\HomeControl.xaml;UserControls\ResultControl.xaml;
 
-True
+False
 
